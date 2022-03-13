@@ -1,13 +1,18 @@
 import React from 'react';
 import {ThemeProvider} from 'styled-components';
 import {theme} from './styles/theme';
-import {Home, PromoPage} from './pages';
+import {NavigationContainer} from '@react-navigation/native';
+import Routes from './routes';
+import {AppProvider} from './store';
 
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      {/* <Home /> */}
-      <PromoPage />
+      <NavigationContainer>
+        <AppProvider>
+          <Routes />
+        </AppProvider>
+      </NavigationContainer>
     </ThemeProvider>
   );
 };

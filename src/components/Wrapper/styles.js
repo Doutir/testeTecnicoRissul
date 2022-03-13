@@ -21,8 +21,31 @@ export const HeaderWrapper = styled.View`
   `}
 `;
 
-// Body components
+export const WrapperNotification = styled.View``;
 
+export const WrapperNotificationQuantity = styled.View`
+  position: absolute;
+  bottom: -3;
+  left: -8;
+  z-index: 2;
+  padding: 0 ${fontSize(4)};
+  border-radius: 100px;
+  align-items: center;
+  justify-content: center;
+  ${({theme}) => css`
+    background-color: ${theme.colors.secondary};
+  `}
+`;
+
+export const NotificationQuantity = styled(Typography)`
+  font-size: ${fontSize(12)};
+  text-align: center;
+  ${({theme}) => css`
+    color: ${theme.colors.highPure};
+  `}
+`;
+
+// Body components
 export const WrapperBodyView = styled.View`
   height: ${Layout.height(80)};
   padding: ${Layout.height(1)} ${Layout.width(2)};
@@ -52,11 +75,11 @@ export const IconText = styled(Typography)`
 export const SearchIconWrapper = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
-  margin-top: ${Layout.height(1)};
   width: ${Layout.width(15)};
   height: ${Layout.width(15)};
   border-radius: ${Layout.height(100)};
   margin-top: -13%;
+  margin-left: -5%;
   background-color: red;
   ${({theme}) => css`
     background: ${theme.colors.secondary};

@@ -1,15 +1,25 @@
-import React, {useState} from 'react';
+import React from 'react';
 import * as S from './styles';
 import {Wrapper, AppButton, Line, CardProduct} from '~/components';
 import {Banner} from './components/Banner';
 import {Layout} from '~/utils/Layout';
+import {formatPrice} from '~/utils/formatPrice';
+import {useProduct} from '~/store/product';
 
-const itens = [1, 2, 3, 4, 5, 6];
-
-const Home = () => {
-  // const [activeSlide, setActiveSlide] = useState(0);
+const Home = ({navigation}) => {
+  const {itens} = useProduct();
   const renderItem = ({item, index}) => {
-    return <CardProduct withPromotionalPrice={true} />;
+    return (
+      <CardProduct
+        key={item.id}
+        price={formatPrice(item.price)}
+        name={item.name}
+        image={item.image}
+        promotionalPrice={formatPrice(item.promotionalPrice)}
+        onPress={() => navigation.navigate('PromoPage', {itemId: item.id})}
+        withPromotionalPrice={!!item.promotionalPrice}
+      />
+    );
   };
 
   return (
@@ -24,7 +34,6 @@ const Home = () => {
             renderItem={renderItem}
             sliderWidth={Layout.width(100, false)}
             itemWidth={Layout.width(80, false)}
-            // onSnapToItem={index => setActiveSlide(index)}
           />
         </S.WrapperCarousel>
         <AppButton marginTop={1} />
@@ -36,7 +45,6 @@ const Home = () => {
             renderItem={() => <Banner />}
             sliderWidth={Layout.width(100, false)}
             itemWidth={Layout.width(80, false)}
-            // onSnapToItem={index => setActiveSlide(index)}
           />
         </S.WrapperCarousel>
         <Line />
@@ -49,10 +57,18 @@ const Home = () => {
         <S.WrapperCarousel height={18}>
           <S.CarouselFooter
             data={itens}
-            renderItem={() => <CardProduct withPromotionalPrice={false} />}
+            renderItem={({item}) => (
+              <CardProduct
+                key={item.id}
+                price={formatPrice(item.price)}
+                name={item.name}
+                image={item.image}
+                promotionalPrice={formatPrice(item.promotionalPrice)}
+                withPromotionalPrice={false}
+              />
+            )}
             sliderWidth={Layout.width(100, false)}
             itemWidth={Layout.width(80, false)}
-            // onSnapToItem={index => setActiveSlide(index)}
           />
         </S.WrapperCarousel>
         <AppButton marginTop={5} marginBottom={15} />

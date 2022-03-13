@@ -1,21 +1,20 @@
 import React from 'react';
 import {CardPrice} from '../CardPrice';
 import TagVivaRed from '~/assets/images/tagVivaRed.png';
-import Achocolatado from '~/assets/images/achocolatado.png';
-
+import {formatPrice} from '~/utils/formatPrice';
 import * as S from './styles';
 
-const CardPromoPage = () => {
+const CardPromoPage = ({image, title, price = 0, promotionalPrice = 0}) => {
   return (
     <S.Container>
       <S.TagImg source={TagVivaRed} />
       <S.WrapperImageHeader>
-        <S.ImageHeader source={Achocolatado} />
+        <S.ImageHeader source={image} />
       </S.WrapperImageHeader>
-      <S.Title>Achocolatado em pó Nescau Sashê 800g</S.Title>
-      <S.Price>RS 8,90</S.Price>
+      <S.Title>{title}</S.Title>
+      <S.Price>{formatPrice(price)}</S.Price>
       <S.SubPrice>Cada</S.SubPrice>
-      <CardPrice />
+      <CardPrice promotionalPrice={formatPrice(promotionalPrice)} />
     </S.Container>
   );
 };

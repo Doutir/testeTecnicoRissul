@@ -2,11 +2,16 @@ import React from 'react';
 import {Linking} from 'react-native';
 import {Wrapper, AppButton, Line, CardProduct} from '~/components';
 import {Layout} from '~/utils/Layout';
+import {useProduct} from '~/store/product';
+import {formatPrice} from '~/utils/formatPrice';
 import {CardPromoPage} from './components/CardPromoPage';
-
 import * as S from './styles';
-const itens = [1, 2, 3, 4, 5, 6];
-const PromoPage = () => {
+
+const PromoPage = ({route}) => {
+  const {itemId} = route.params;
+  const {itens} = useProduct();
+  const [product] = itens.filter(item => item.id === itemId);
+  console.log({product});
   const handleClickLink = () =>
     Linking.openURL(
       'https://www.google.com/maps/place/Supper+Rissul/@-30.017852,-51.2012189,15z/data=!4m2!3m1!1s0x0:0x89184bab3efd93c5?sa=X&ved=2ahUKEwiOyri77cP2AhWprpUCHQPfCYwQ_BJ6BAg0EAU',
@@ -14,7 +19,12 @@ const PromoPage = () => {
   return (
     <Wrapper>
       <S.Container>
-        <CardPromoPage />
+        <CardPromoPage
+          image={product.image}
+          title={product.name}
+          price={product.price}
+          promotionalPrice={product.promotionalPrice}
+        />
         <AppButton
           buttonColorBackground="secondary"
           title="ADICIONAR À LISTA DE COMPRAS"
@@ -45,7 +55,16 @@ const PromoPage = () => {
         <S.FooterSubtitle>Rissul Vila Ipiranga</S.FooterSubtitle>
         <S.CarouselFooter
           data={itens}
-          renderItem={() => <CardProduct withPromotionalPrice={false} />}
+          renderItem={({item}) => (
+            <CardProduct
+              key={item.id}
+              price={formatPrice(item.price)}
+              name={item.name}
+              image={item.image}
+              promotionalPrice={formatPrice(item.promotionalPrice)}
+              withPromotionalPrice={false}
+            />
+          )}
           sliderWidth={Layout.width(100, false)}
           itemWidth={Layout.width(80, false)}
         />

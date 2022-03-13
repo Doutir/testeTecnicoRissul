@@ -4,13 +4,10 @@ import {Layout} from '~/utils/Layout';
 import {fontSize} from '~/utils/Layout';
 
 export const Container = styled.View`
-  ${({theme}) => css`
-    background: ${theme.colors.highPure};
-  `}
+  background-color: transparent;
   border-radius: 8px;
 
   width: 55%;
-  height: 100px;
   margin-top: 5%;
   margin-bottom: 10%;
   position: absolute;
@@ -66,8 +63,6 @@ export const Price = styled(Typography).attrs({
 
 export const SubPrice = styled(Typography)`
   font-size: ${fontSize(8)};
-  /* background-color: blue; */
-  /* width: 150px; */
   text-transform: capitalize;
   width: ${Layout.width(50)};
   ${({theme, biggerCharacters}) => css`
@@ -79,7 +74,5 @@ export const FooterCard = styled(Typography)`
   font-size: ${fontSize(9)};
   margin-top: ${Layout.height(0.5)};
   width: ${Layout.width(50)};
-  /* ${({theme, biggerCharacters}) => css`
-    color: ${theme.colors.highPure};
-  `}; */
+  background-color: transparent;
 `;

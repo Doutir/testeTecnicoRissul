@@ -3,7 +3,7 @@ import {View} from 'react-native';
 
 import * as S from './styles';
 
-const Card = () => {
+const Card = ({promotionalPrice}) => {
   return (
     <S.Container>
       <S.WrapperCardHeader>
@@ -12,7 +12,7 @@ const Card = () => {
 
       <S.WrapperBody>
         <S.WrapperPrice>
-          <S.Price>R$ 2,00</S.Price>
+          <S.Price>{promotionalPrice}</S.Price>
           <S.SubPrice>Cada</S.SubPrice>
         </S.WrapperPrice>
       </S.WrapperBody>

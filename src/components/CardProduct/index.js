@@ -5,19 +5,26 @@ import {Card} from '../Card';
 import {Chip} from '../Chip';
 import * as S from './styles';
 
-const CardProduct = ({withPromotionalPrice}) => {
+const CardProduct = ({
+  withPromotionalPrice,
+  promotionalPrice,
+  price,
+  name,
+  image,
+  onPress,
+}) => {
   return (
-    <S.Container withPromotionalPrice={withPromotionalPrice}>
+    <S.Container withPromotionalPrice={withPromotionalPrice} onPress={onPress}>
       {withPromotionalPrice ? <S.TagImg source={TagVivaRed} /> : <Chip />}
 
       <S.WrapperLeft>
-        <S.ImageProduct source={Achocolatado} />
+        <S.ImageProduct source={image} />
       </S.WrapperLeft>
       <S.WrapperRight>
-        <S.Title>Achocolatado em pó Nescau Sachê 800g</S.Title>
-        <S.Price>R$ 8,90</S.Price>
+        <S.Title>{name}</S.Title>
+        <S.Price>{price}</S.Price>
         <S.SubPrice>Cada</S.SubPrice>
-        {withPromotionalPrice && <Card />}
+        {withPromotionalPrice && <Card promotionalPrice={promotionalPrice} />}
       </S.WrapperRight>
     </S.Container>
   );

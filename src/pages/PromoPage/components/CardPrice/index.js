@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './styles';
 
-const CardPrice = () => {
+const CardPrice = ({promotionalPrice}) => {
   return (
     <S.Container>
       <S.WrapperCardHeader>
@@ -10,7 +10,7 @@ const CardPrice = () => {
 
       <S.WrapperBody>
         <S.WrapperPrice>
-          <S.Price>R$ 2,00</S.Price>
+          <S.Price>{promotionalPrice}</S.Price>
           <S.SubPrice>
             De crédito por unidade{'\n'} na compra de 2 unidades
           </S.SubPrice>

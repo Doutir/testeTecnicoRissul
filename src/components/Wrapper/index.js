@@ -8,7 +8,12 @@ const Header = ({bodyScrollView = false}) => {
     <S.HeaderWrapper>
       <S.Icon color="#fff" name="menu" />
       <S.Logo source={Logo} />
-      <S.Icon color="#fff" name="bell-outline" />
+      <S.WrapperNotification>
+        <S.WrapperNotificationQuantity>
+          <S.NotificationQuantity>2</S.NotificationQuantity>
+        </S.WrapperNotificationQuantity>
+        <S.Icon color="#fff" name="bell-outline" />
+      </S.WrapperNotification>
     </S.HeaderWrapper>
   );
 };
