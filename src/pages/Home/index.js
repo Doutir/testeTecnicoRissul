@@ -71,7 +71,7 @@ const Home = ({navigation}) => {
             itemWidth={Layout.width(80, false)}
           />
         </S.WrapperCarousel>
-        <AppButton marginTop={5} marginBottom={15} />
+        <AppButton marginTop={5} marginBottom={12} />
       </S.Container>
     </Wrapper>
   );
